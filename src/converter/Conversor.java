@@ -1,12 +1,17 @@
 package converter;
 
+import java.util.Scanner;
+
 public class Conversor {
 	
 	String entrada;
-	double salida;
+	double datoRecibido;
+	double valorUnDolar = 340;
 	
 	public double convertirPesoADolar() {
-		return 0;
+		Scanner datoDeEntrada = new Scanner(System.in);
+		datoRecibido = datoDeEntrada.nextDouble();
+		return datoRecibido;
 	}
 	public double convertirPesoAEuro() {
 		return 0;
