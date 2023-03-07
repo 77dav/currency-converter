@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Conversor {
 	
 	double valorRecibido;
-	double valorUnDolar = 340;
+	double valorUnDolar = 210;
 	double valorUnEuro = 25.1;
 	double valorUnaLibraEsterlina = 12.25;
 	double valorUnYenJapones = 4000;
@@ -29,12 +29,12 @@ public class Conversor {
 		
 		switch (opcionElegida) {
 		case 0:
-			valorConvertido = valorUnDolar * valorRecibido;
-			System.out.println(valorRecibido + " son " + valorConvertido + " dolares");
+			valorConvertido =  valorRecibido / valorUnDolar;
+			System.out.println(valorRecibido + " pesos " + " son " + valorConvertido + " dolares");
 			break;
 		case 1:
 			valorConvertido = valorUnEuro * valorRecibido;
-			System.out.println(valorRecibido + " son " + valorConvertido + " euros");
+			System.out.println(valorRecibido + " pesos " + " son " + valorConvertido + " euros");
 			break;
 
 		default:
