@@ -9,7 +9,8 @@ public class Main {
 		Conversor conversor = new Conversor();
 		//Scanner monedaElegida = new Scanner(System.in);
 		
-		conversor.convertirPeso();
+		//conversor.convertirPesoAMonedaExtanjera(Divisa.WON_SUL_COREANO);
+		conversor.convertirMonedaExtanjeraAPeso(Divisa.YEN_JAPONES);
 	}
 
 }
