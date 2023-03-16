@@ -1,5 +1,8 @@
 package converter;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import gui.VentanaPrincipal;
@@ -7,14 +10,18 @@ import gui.VentanaPrincipal;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		//Conversor conversor = new Conversor();
-		VentanaPrincipal ventana = new VentanaPrincipal();
-		//Scanner monedaElegida = new Scanner(System.in);
-		
-		//conversor.convertirPesoAMonedaExtanjera(Divisa.WON_SUL_COREANO);
-		//conversor.convertirMonedaExtanjeraAPeso(Divisa.YEN_JAPONES);
-		//System.out.println(Divisa.values().length);
-	}
 
+		VentanaPrincipal ventana = new VentanaPrincipal();
+//		
+//		BigDecimal bg1 = new BigDecimal("1"); 
+//		BigDecimal bg2 = new BigDecimal("3"); 
+//		System.out.println("bg1 + bg2 = " + bg1.divide(bg2, 9, RoundingMode.HALF_DOWN));
+//		 
+//		DecimalFormat df = new DecimalFormat("#.00");
+//		
+//		double a = 0.11d;
+//		double b = 0.22d;
+//		
+//		System.out.println(a+b/*"df " + df.format(a+b)*/);	
+	}
 }

@@ -9,13 +9,13 @@ public enum Divisa {
 	WON_SUL_COREANO(53047),
 	PESO_ARG(1);	
 	
-	private int valorEnPesos;
+	private double valorEnPesos;
 
-	private Divisa(int valorEnPesos) {
+	private Divisa(double valorEnPesos) {
 		this.valorEnPesos = valorEnPesos;
 	}
 
-	public int getValorEnPesos() {
+	public double getValorEnPesos() {
 		return valorEnPesos;
 	}
 }

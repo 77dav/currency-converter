@@ -23,41 +23,36 @@ public class VentanaPrincipal {
 	JFrame ventana;
 	JButton btnConvertir;
 	JLabel texto, textoResultado;
-	JTextField campo1;
+	JTextField cajaInput;
 	JComboBox<String> comboBox1, comboBox2;
 	Conversor conversor;
 	int divisa1, divisa2;
-	double resultadoDouble;
-	String resultadoString;
-	String valorRecibidoString;
-	double valorRecibidoDouble;
-	
+	double resultadoDouble, valorRecibidoDouble;
+	String resultadoString, valorRecibidoString;
+
 	public VentanaPrincipal() {
 		
 		conversor = new Conversor();
 				
 		ventana = new JFrame();
 		ventana.setVisible(true);
-		ventana.setBounds(960, 540, 600, 350);
+		ventana.setBounds(960, 540, 525, 350);
 		ventana.setDefaultCloseOperation(3);
-		ventana.setTitle("Conversor de Divisas");
+		ventana.setTitle("Conversor de divisas");
 		ventana.setLayout(null);
 		
+		texto("Convertir:", 45, 20, 200, 30);
+		texto("a", 257, 55, 50, 30);
 		texto("Introduzca el valor:", 45, 120, 200, 30);
-		texto("Convertir:", 45, 10, 200, 30);
-		texto("a", 257, 40, 50, 30);
+		cajaInput(250, 120, 230, 30);
+		texto("Resultado:", 45, 185, 200, 30);
+		cajaVerResultado(220, 185, 260, 30);
 		botonConvertir(190, 250, 120, 50);
-		cajaVerResultado(250, 200, 200, 30);
-		
-		campo1 = new JTextField();
-		ventana.add(campo1);
-		campo1.setBounds(250, 120, 200, 30);
-		campo1.setFocusable(true);
 		
 		// combo box 1
 		comboBox1 = new JComboBox<String>();
 		ventana.add(comboBox1);
-		comboBox1.setBounds(45, 40, 200, 30);
+		comboBox1.setBounds(45, 55, 200, 30);
 		comboBox1.addItem("--");
 		for (Divisa divisa : Divisa.values()) {
 			comboBox1.addItem(divisa.name());
@@ -79,7 +74,7 @@ public class VentanaPrincipal {
 		// combo box 2
 		comboBox2 = new JComboBox<String>();
 		ventana.add(comboBox2);
-		comboBox2.setBounds(280, 40, 200, 30);
+		comboBox2.setBounds(280, 55, 200, 30);
 		comboBox2.addItem("--");
 		for (Divisa divisa : Divisa.values()) {
 			comboBox2.addItem(divisa.name());
@@ -130,24 +125,19 @@ public class VentanaPrincipal {
 		btnConvertir.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				valorRecibidoString = campo1.getText();
-				//System.out.println(valorRecibidoString);
+				valorRecibidoString = cajaInput.getText();
 				valorRecibidoDouble = Double.parseDouble(valorRecibidoString);
-				//System.out.println(valorRecibidoDouble);
-				System.out.println(comboBox1.getSelectedItem());
-				System.out.println(comboBox1.getSelectedItem() != Divisa.PESO_ARG.name());
-				System.out.println(comboBox1.getSelectedItem());
-				System.out.println(Divisa.PESO_ARG.name());
-				
+			
 				if(comboBox1.getSelectedItem() != Divisa.PESO_ARG.name()) {
 					conversor.convertirMonedaExtanjeraAPeso(divisa1, valorRecibidoDouble);
 				}else {
 					conversor.convertirPesoAMonedaExtanjera(divisa2, valorRecibidoDouble);
 				}
 				
-				resultadoDouble = conversor.getValorConvertido();
+				resultadoDouble = conversor.valorFinalLimitado();//conversor.getValorConvertido();
 				resultadoString = Double.toString(resultadoDouble);		
 				textoResultado.setText(resultadoString);
+				System.out.println(conversor.getValorConvertido());
 			}
 		});	
 	}
@@ -163,7 +153,6 @@ public class VentanaPrincipal {
 	public void cajaVerResultado(int x, int y, int largo, int ancho) {
 		textoResultado = new JLabel();
 		ventana.add(textoResultado);
-//		texto2.setText(resultadoString);
 		textoResultado.setBounds(x, y, largo, ancho);
 		textoResultado.setFont(new Font("Arial", Font.BOLD, 16));
 		textoResultado.setOpaque(true);
@@ -176,5 +165,12 @@ public class VentanaPrincipal {
 		btnConvertir.setBounds(x, y, largo, ancho);
 		btnConvertir.setText("CONVERTIR");
 		btnConvertir.setFont(new Font("Arial", Font.BOLD, 12));
+	}
+	
+	public void cajaInput(int x, int y, int largo, int ancho) {
+		cajaInput = new JTextField();
+		ventana.add(cajaInput);
+		cajaInput.setBounds(x, y, largo, ancho);
+		cajaInput.setFocusable(true);
 	}
 }

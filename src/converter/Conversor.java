@@ -1,11 +1,13 @@
 package converter;
 
 import java.lang.reflect.Array;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class Conversor {
 
-	double valorConvertido;
+	double valorConvertido, valorFinal;
 	Scanner entrada = new Scanner(System.in);
 	Divisa[] divisas = Divisa.values();
 	
@@ -19,6 +21,13 @@ public class Conversor {
 	
 	public double getValorConvertido() {
 		return valorConvertido;
+	}
+	
+	public double valorFinalLimitado() {	
+		BigDecimal bD = new BigDecimal(valorConvertido);
+		bD = bD.setScale(6, RoundingMode.HALF_UP);
+		valorFinal = bD.doubleValue();
+		return valorFinal;
 	}
 
 //	public double getCantidadPesosRecibidos() {
